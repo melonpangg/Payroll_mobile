@@ -19,4 +19,20 @@
     <string name="btn_register">Register</string>
     <string name="login_link">Login to your account</string>
 
+    <string name="dashboard">Dashboard</string>
+    <string name="dashboard_username">Username</string>
+
+    <string name="card_overview_title">Payroll Information Overview:</string>
+    <string name="current_salary">Current Salary: ₱00,000</string>
+    <string name="last_payslip">Last Payslip: </string>
+    <string name="upcoming_paydate">Upcoming Pay Date: DD/MM/YYYY</string>
+
+    <string name="dashboard_payslips">Payslips</string>
+    <string name="dashboard_profile">Personal Profile</string>
+    <string name="dashboard_attendance">Attendance</string>
+    <string name="dashboard_leave">Leave / Time-off</string>
+    <string name="dashboard_deductions">Deductions</string>
+    <string name="dashboard_notifications">Notifications</string>
+    <string name="dashboard_support">Support / Help</string>
+
 </resources>

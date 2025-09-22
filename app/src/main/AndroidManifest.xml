@@ -11,17 +11,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Payroll">
-
+        <activity
+            android:name=".SupportActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DeductionsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LeaveActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AttendanceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PayslipsActivity"
+            android:exported="false" />
         <activity
             android:name=".RegisterActivity"
             android:exported="true"
-            android:screenOrientation="unspecified">
-        </activity>
+            android:screenOrientation="unspecified" />
         <activity
             android:name=".LoginActivity"
             android:exported="true"
-            android:screenOrientation="unspecified">
-        </activity>
+            android:screenOrientation="unspecified" />
         <activity
             android:name=".StartActivity"
             android:exported="true"
@@ -35,8 +50,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:screenOrientation="unspecified">
-        </activity>
+            android:screenOrientation="unspecified" />
 
         <meta-data
             android:name="preloaded_fonts"
