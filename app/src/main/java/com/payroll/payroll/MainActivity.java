@@ -1,60 +1,54 @@
 package com.payroll.payroll;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
-
-import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.Fragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
+
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        CardView cardPayslips = findViewById(R.id.card_payslips);
-        CardView cardProfile  = findViewById(R.id.card_profile);
-        CardView cardAttendance = findViewById(R.id.card_attendance);
-        CardView cardLeave = findViewById(R.id.card_leave);
-        CardView cardDeductions = findViewById(R.id.card_deductions);
-        CardView cardSupport = findViewById(R.id.card_support);
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-        cardPayslips.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, PayslipsActivity.class);
-            startActivity(intent);
-        });
+        // Load DashboardFragment by default
+        if (savedInstanceState == null) {
+            loadFragment(new DashboardFragment());
+            bottomNavigationView.setSelectedItemId(R.id.nav_dashboard);
+        }
 
-        cardProfile.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
-            startActivity(intent);
-        });
+        // Handle navigation item clicks
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            Fragment selectedFragment = null;
 
-        cardAttendance.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, AttendanceActivity.class);
-            startActivity(intent);
-        });
+            int itemId = item.getItemId();
+            if (itemId == R.id.nav_dashboard) {
+                selectedFragment = new DashboardFragment();
+            } else if (itemId == R.id.nav_payslips) {
+                selectedFragment = new PayslipsFragment();
+            } else if (itemId == R.id.nav_attendance) {
+                selectedFragment = new AttendanceFragment();
+            } else if (itemId == R.id.nav_profile) {
+                selectedFragment = new ProfileFragment();
+            }
 
-        cardLeave.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, LeaveActivity.class);
-            startActivity(intent);
+            if (selectedFragment != null) {
+                loadFragment(selectedFragment);
+                return true;
+            }
+            return false;
         });
+    }
 
-        cardDeductions.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, DeductionsActivity.class);
-            startActivity(intent);
-        });
-
-        cardSupport.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, SupportActivity.class);
-            startActivity(intent);
-        });
+    private void loadFragment(@NonNull Fragment fragment) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, fragment)
+                .commit();
     }
 }

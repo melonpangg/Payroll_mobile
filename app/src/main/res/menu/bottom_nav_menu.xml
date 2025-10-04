@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_dashboard"
+        android:icon="@drawable/dashboard"
+        android:title="Dashboard" />
+
+    <item
+        android:id="@+id/nav_payslips"
+        android:icon="@drawable/copy"
+        android:title="Payslips" />
+
+    <item
+        android:id="@+id/nav_attendance"
+        android:icon="@drawable/calendar"
+        android:title="Attendance" />
+
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/user"
+        android:title="Profile" />
+</menu>
+
